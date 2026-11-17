@@ -14,8 +14,9 @@ h1,h2{font-family:Rockwell,"Roboto Slab",Georgia,serif;margin:0;line-height:1.1;
 h1{font-size:3rem}h2{font-size:2rem;margin:.25em 0 .5em}
 p{margin:.3em 0}code,.mono,.tx{font-family:ui-monospace,Consolas,monospace}
 #deck{flex:1;position:relative;min-height:0}
-.s{position:absolute;inset:0;padding:.7rem clamp(20px,5vw,80px) .4rem;overflow:auto;display:none}
+.s{position:absolute;inset:0;padding:.7rem clamp(20px,5vw,80px) 1rem;overflow-y:auto;overflow-x:hidden;display:none}
 .s.on{display:flex;flex-direction:column;animation:in .35s ease-out}
+.s>*{flex:none}
 @keyframes in{from{opacity:0;transform:translateX(30px)}}
 .tb{display:flex;align-items:center;gap:.3em;font:.55rem ui-monospace,Consolas,monospace;color:var(--mut);border-bottom:1px solid var(--ln);padding-bottom:.35em;margin-bottom:.4em}
 .tb i{width:.6em;height:.6em;border-radius:50%;background:var(--co)}.tb i+i{background:var(--am)}.tb i+i+i{background:var(--ok)}.tb span{margin-left:.5em}
@@ -23,17 +24,17 @@ p{margin:.3em 0}code,.mono,.tx{font-family:ui-monospace,Consolas,monospace}
 .tg.ex{background:var(--ok);color:var(--on)}.tg.ex::before{content:"";display:inline-block;width:.5em;height:.5em;border-radius:50%;background:var(--on);margin-right:.5em;animation:bl 1.2s infinite}@keyframes bl{50%{opacity:.2}}
 .act{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem}
 .cg.c4{grid-template-columns:repeat(2,1fr)}.cg.sm{grid-template-columns:repeat(3,1fr);gap:.7rem;padding-bottom:.5rem}.cg.sm .it{font-size:.85rem;padding:.6rem .9rem}.cg.sm .it b{font-size:1.05rem;margin-bottom:.25rem}@media(max-width:800px){.cg{grid-auto-rows:auto}.cg.sm,.cg.c4{grid-template-columns:1fr}}
-.cg{flex:1;display:grid;grid-auto-rows:1fr;min-height:0;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;align-content:center;padding-bottom:1rem}
+.cg{display:grid;grid-auto-rows:1fr;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1rem;padding:.8rem 0 .4rem}
 .it{background:var(--pn);border:1px solid var(--ln);border-top:6px solid var(--am);border-radius:14px;padding:1.1rem 1.2rem;font-size:1.05rem;line-height:1.35;box-shadow:0 2px 10px rgba(27,36,48,.06)}
 .it b{display:block;font:700 1.4rem/1.15 Rockwell,"Roboto Slab",Georgia,serif;color:var(--am);margin-bottom:.4rem}
-.two{flex:1;min-height:0;display:grid;grid-template-columns:.7fr 1.3fr;gap:1.2rem;align-items:stretch}
+.two{display:grid;grid-template-columns:.7fr 1.3fr;gap:1.2rem;align-items:start}
 @media(max-width:800px){.two{grid-template-columns:1fr}}
 .b{font:inherit;font-size:.9rem;font-weight:700;cursor:pointer;border:2px solid var(--am);background:var(--am);color:var(--on);padding:.3em .9em;border-radius:6px;margin:.4em .3em 0 0}
 .b.o{background:transparent;color:var(--am)}
 .b:focus-visible,.ch:focus-visible,.dt:focus-visible{outline:3px solid var(--tx);outline-offset:2px}
 .ch{font:inherit;font-size:.85rem;cursor:pointer;border:2px solid var(--ln);background:#fff;color:var(--tx);border-radius:6px;padding:.2em .6em;margin:0 .25em .3em 0}
 .ch.sel{background:var(--co);border-color:var(--co);color:var(--on)}
-.sc{flex:1;min-height:8rem;background:var(--pn);border:1px solid var(--ln);border-radius:14px;padding:1rem 1.2rem;position:relative;overflow:hidden;font-size:1rem;display:flex;flex-direction:column;justify-content:center;gap:.4rem}
+.sc{min-height:8rem;background:var(--pn);border:1px solid var(--ln);border-radius:14px;padding:1rem 1.2rem;position:relative;overflow:hidden;font-size:1rem;display:flex;flex-direction:column;justify-content:center;gap:.4rem}
 .cards{display:flex;gap:.5rem;justify-content:space-around;flex-wrap:wrap}
 .cd{flex:1;min-width:5.5rem;background:#fff;border:2px solid var(--ln);border-radius:8px;padding:.5rem .7rem;font-size:.9rem;text-align:center;transition:.4s;box-shadow:0 1px 4px rgba(27,36,48,.06)}
 .cd.on{border-color:var(--am);transform:translateY(-3px)}.cd.hit{border-color:var(--ok);background:#eaf7ef}.cd.bad{border-color:var(--co);background:#fdeae5}
@@ -69,7 +70,18 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 .stage{flex:none;height:clamp(9rem,28vh,13rem);margin:.4rem 0 .6rem;background:#fff;border:1px solid var(--ln);border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(27,36,48,.06)}
 .stage svg{display:block;width:100%;height:100%}
 .ico{display:block;width:100%;height:3.4rem;margin-bottom:.45rem}
-.ej{flex:none;margin-top:.8rem;padding-top:.6rem;border-top:2px dashed var(--ln);display:flex;flex-direction:column;gap:.4rem}.ej[hidden]{display:none}
+/* Ejemplos en línea: marco propio, altura natural y sin encogerse */
+.ej{flex:none;margin-top:1rem;padding:.9rem 1rem 1rem;background:#fbfcfe;border:2px dashed var(--ln);border-radius:14px;display:flex;flex-direction:column;gap:.6rem}
+.ej[hidden]{display:none}
+.ej h2{font-size:1.5rem;margin:.1em 0 .2em}
+.ej .sc{min-height:auto;flex:none;padding:.9rem 1rem}
+.ej .two{flex:none}
+.ej .act{margin-top:0}
+.ej .cards{gap:.4rem}
+.ej .cd{min-width:0}
+.ej .flip{height:clamp(11rem,40vh,18rem)}
+.ej .scr{min-height:7rem}
+.ej .msg{margin-top:.2rem}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
