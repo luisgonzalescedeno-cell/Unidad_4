@@ -31,7 +31,7 @@ p{margin:.3em 0}code,.mono,.tx{font-family:ui-monospace,Consolas,monospace}
 @media(max-width:800px){.two{grid-template-columns:1fr}}
 .b{font:inherit;font-size:.9rem;font-weight:700;cursor:pointer;border:2px solid var(--am);background:var(--am);color:var(--on);padding:.3em .9em;border-radius:6px;margin:.4em .3em 0 0}
 .b.o{background:transparent;color:var(--am)}
-.b:focus-visible,.ch:focus-visible,.dt:focus-visible{outline:3px solid var(--tx);outline-offset:2px}
+.b:focus-visible,.ch:focus-visible{outline:3px solid var(--tx);outline-offset:2px}
 .ch{font:inherit;font-size:.85rem;cursor:pointer;border:2px solid var(--ln);background:#fff;color:var(--tx);border-radius:6px;padding:.2em .6em;margin:0 .25em .3em 0}
 .ch.sel{background:var(--co);border-color:var(--co);color:var(--on)}
 .sc{min-height:8rem;background:var(--pn);border:1px solid var(--ln);border-radius:14px;padding:1rem 1.2rem;position:relative;overflow:hidden;font-size:1rem;display:flex;flex-direction:column;justify-content:center;gap:.4rem}
@@ -59,11 +59,7 @@ p{margin:.3em 0}code,.mono,.tx{font-family:ui-monospace,Consolas,monospace}
 .fl{position:relative;display:flex;gap:1.6rem;margin-top:1.4rem}.fl::before{content:"";position:absolute;left:1rem;right:1rem;top:58%;border-top:3px dashed var(--am);animation:dash 1s linear infinite}.fl .dbi{position:relative;width:3.6rem;animation:bob 3s ease-in-out infinite}.fl .dbi:nth-child(2){animation-delay:.5s}.fl .dbi:nth-child(3){animation-delay:1s}.fl .dbi:nth-child(4){animation-delay:1.5s}
 @keyframes bob{50%{transform:translateY(-10px)}}
 .cv{flex:1;display:grid;grid-template-columns:1.35fr .8fr;gap:2rem;align-items:center}@media(max-width:800px){.cv{grid-template-columns:1fr}}
-.logo{display:block;width:clamp(100px,18vh,170px);height:auto;margin:0 0 .8rem;object-fit:contain}
 .team{background:var(--pn);border:1px solid var(--ln);border-top:6px solid var(--am);border-radius:14px;padding:.9rem 1.2rem}.team h3{font:700 1.2rem Rockwell,"Roboto Slab",serif;color:var(--am);margin:0 0 .4rem}.team ul{list-style:none;margin:0;padding:0}.team li{padding:.45rem 0;border-top:1px solid var(--ln);font-size:.85rem}
-#dots{position:relative;display:flex;justify-content:center;gap:.5rem;padding:.4rem 0 calc(.5rem + env(safe-area-inset-bottom,0))}
-#ct{position:absolute;right:clamp(20px,5vw,80px);top:.35rem;font:.6rem ui-monospace,Consolas,monospace;color:var(--mut)}
-.dt{width:.6rem;height:.6rem;border-radius:50%;border:0;background:var(--ln);cursor:pointer;padding:0}.dt.on{background:var(--am);transform:scale(1.3)}
 input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margin-left:.5rem}
 .netsvg{width:100%;max-height:16rem}
 .lp{animation:bl 1.4s infinite}
@@ -93,7 +89,6 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 
 <section class="s" data-f="distribuidas.sql">
 <div class="cv"><div>
-<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/ESCUDETO_UTE-LVT.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Logo de la Universidad Técnica Luis Vargas Torres, Esmeraldas">
 <p class="mono" style="color:var(--am);margin:0">SELECT * FROM unidad_4;</p>
 <h1>Sistemas de bases de datos distribuidas</h1>
 <p style="color:var(--mut)">Base de Datos II. Guía del Ing. Miguel Fabricio Bone Andrade, Mgtr.</p>
@@ -289,7 +284,6 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 </section>
 
 </div>
-<div id="dots"><span id="ct"></span></div>
 
 <script>
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -325,11 +319,10 @@ $$('[data-go]').forEach(b=>{
  };
 });
 
-// navegación (flechas, deslizar y puntos)
+// navegación (flechas y deslizar)
 const S=$$('.s');let cur=0;
-S.forEach((s,k)=>{s.insertAdjacentHTML('afterbegin',`<div class="tb"><i></i><i></i><i></i><span>${s.dataset.f}</span></div>`);
- const d=document.createElement('button');d.className='dt';d.setAttribute('aria-label','Diapositiva '+(k+1));d.onclick=()=>go(k);$('#dots').appendChild(d)});
-function go(n){run++;cur=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('on',k==cur));$$('.dt').forEach((d,k)=>d.classList.toggle('on',k==cur));S[cur].scrollTop=0;$('#ct').textContent=(cur+1)+' / '+S.length}
+S.forEach(s=>s.insertAdjacentHTML('afterbegin',`<div class="tb"><i></i><i></i><i></i><span>${s.dataset.f}</span></div>`));
+function go(n){run++;cur=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('on',k==cur));S[cur].scrollTop=0}
 addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))go(cur+1);if(['ArrowLeft','PageUp'].includes(e.key))go(cur-1)});
 let tx=0;addEventListener('touchstart',e=>tx=e.touches[0].clientX);addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>70)go(cur+(d<0?1:-1))});
 $('#fl').innerHTML=['#1f6fb5','#d9482b','#4a8fd6','#2e8b57'].map(cyl).map(s=>`<div class="dbi">${s}</div>`).join('');
