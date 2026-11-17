@@ -58,6 +58,7 @@ p{margin:.3em 0}code,.mono,.tx{font-family:ui-monospace,Consolas,monospace}
 .fl{position:relative;display:flex;gap:1.6rem;margin-top:1.4rem}.fl::before{content:"";position:absolute;left:1rem;right:1rem;top:58%;border-top:3px dashed var(--am);animation:dash 1s linear infinite}.fl .dbi{position:relative;width:3.6rem;animation:bob 3s ease-in-out infinite}.fl .dbi:nth-child(2){animation-delay:.5s}.fl .dbi:nth-child(3){animation-delay:1s}.fl .dbi:nth-child(4){animation-delay:1.5s}
 @keyframes bob{50%{transform:translateY(-10px)}}
 .cv{flex:1;display:grid;grid-template-columns:1.35fr .8fr;gap:2rem;align-items:center}@media(max-width:800px){.cv{grid-template-columns:1fr}}
+.logo{display:block;width:clamp(90px,16vh,150px);height:auto;margin:0 0 .8rem}
 .team{background:var(--pn);border:1px solid var(--ln);border-top:6px solid var(--am);border-radius:14px;padding:.9rem 1.2rem}.team h3{font:700 1.2rem Rockwell,"Roboto Slab",serif;color:var(--am);margin:0 0 .4rem}.team ul{list-style:none;margin:0;padding:0}.team li{padding:.45rem 0;border-top:1px solid var(--ln);font-size:.85rem}
 #dots{position:relative;display:flex;justify-content:center;gap:.5rem;padding:.4rem 0 calc(.5rem + env(safe-area-inset-bottom,0))}
 #ct{position:absolute;right:clamp(20px,5vw,80px);top:.35rem;font:.6rem ui-monospace,Consolas,monospace;color:var(--mut)}
@@ -79,6 +80,7 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 
 <section class="s" data-f="distribuidas.sql">
 <div class="cv"><div>
+<img class="logo" src="logo_ute.png" alt="Universidad Técnica Luis Vargas Torres, Esmeraldas">
 <p class="mono" style="color:var(--am);margin:0">SELECT * FROM unidad_4;</p>
 <h1>Sistemas de bases de datos distribuidas</h1>
 <p style="color:var(--mut)">Base de Datos II. Guía del Ing. Miguel Fabricio Bone Andrade, Mgtr.</p>
@@ -133,6 +135,7 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 <div class="it"><svg class="ico" viewBox="0 0 120 48" aria-hidden="true"><rect x="10" y="6" width="22" height="14" rx="3" fill="#1f6fb5"><animate attributeName="x" values="10;84;10" dur="3s" repeatCount="indefinite"/></rect><rect x="88" y="28" width="22" height="14" rx="3" fill="#d9482b"><animate attributeName="x" values="88;14;88" dur="3s" repeatCount="indefinite"/></rect></svg><b>Aislamiento</b> Dos transacciones a la vez no se estorban</div>
 <div class="it"><svg class="ico" viewBox="0 0 120 48" aria-hidden="true"><use href="#cyl" x="30" y="2" width="34" height="42" style="color:#1f6fb5"/><path d="M76 24 l7 7 l14 -15" fill="none" stroke="#2e8b57" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.2;.85;1" dur="3s" repeatCount="indefinite"/></path></svg><b>Durabilidad</b> Lo confirmado sobrevive a una falla</div>
 </div>
+<div class="act" style="margin-top:.6rem"><button class="b" data-go="02_acid_ejemplo.sql">Ver ejemplo →</button></div>
 </section>
 
 <section class="s" data-f="02_acid_ejemplo.sql">
@@ -247,6 +250,7 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 <text x="300" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#1b2430">12 reglas de Date</text>
 <text x="300" y="115" text-anchor="middle" font-size="11" fill="#5b6777">1 a 6</text>
 </svg></div><div class="cg sm" id="ra"></div>
+<div class="act" style="margin-top:.6rem"><button class="b" data-go="06_doce_reglas_ejemplo.sql">Ver ejemplo →</button></div>
 </section>
 <section class="s" data-f="06_doce_reglas_concepto2.sql">
 <span class="tg">Concepto</span><h2>Las doce reglas (7 a 12)</h2>
@@ -262,6 +266,7 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 <text x="300" y="97" text-anchor="middle" font-size="13" font-weight="700" fill="#1b2430">12 reglas de Date</text>
 <text x="300" y="115" text-anchor="middle" font-size="11" fill="#5b6777">7 a 12</text>
 </svg></div><div class="cg sm" id="rb"></div>
+<div class="act" style="margin-top:.6rem"><button class="b" data-go="06_doce_reglas_ejemplo.sql">Ver ejemplo →</button></div>
 </section>
 
 <section class="s" data-f="06_doce_reglas_ejemplo.sql">
@@ -406,6 +411,9 @@ const R=[
 ['Independencia del DBMS','Distintos gestores responden al mismo SQL.',async()=>{H(`<p class="tx" id="qq"></p><div class="cards">${['Oracle','MySQL','PostgreSQL'].map(n=>`<div class="cd"><b>${n}</b><div class="tx o"></div></div>`).join('')}</div>`);await ty(q('#qq'),'SELECT nombre, saldo FROM clientes WHERE id=3;',22);const o=$$('.o',rs);for(const k of[0,1,2]){await w(500);o[k].textContent='Rosa  820';o[k].parentNode.classList.add('hit')}m('Mismo SQL, mismo resultado, distinto gestor')}]];
 function rr(k){$$('#rg .ch').forEach((b,j)=>b.classList.toggle('sel',j==k));$('#rt').innerHTML=`<b>${k+1}. ${R[k][0]}</b>`;$('#rd').textContent=R[k][1];play(async()=>{H('');await w(150);await R[k][2]()})}
 R.forEach((r,k)=>{const b=document.createElement('button');b.className='ch';b.textContent=k+1;b.setAttribute('aria-label',r[0]);b.onclick=()=>rr(k);$('#rg').appendChild(b);$(k<6?'#ra':'#rb').insertAdjacentHTML('beforeend',`<div class="it"><b>${k+1}. ${r[0]}</b> ${r[1]}</div>`)});
+
+// Botones "Ver ejemplo": saltan a la diapositiva de ejemplo correspondiente
+$$('[data-go]').forEach(b=>b.onclick=()=>go(S.findIndex(s=>s.dataset.f==b.dataset.go)));
 
 go(0);
 </script>
