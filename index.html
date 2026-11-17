@@ -59,6 +59,7 @@ p{margin:.3em 0}code,.mono,.tx{font-family:ui-monospace,Consolas,monospace}
 .fl{position:relative;display:flex;gap:1.6rem;margin-top:1.4rem}.fl::before{content:"";position:absolute;left:1rem;right:1rem;top:58%;border-top:3px dashed var(--am);animation:dash 1s linear infinite}.fl .dbi{position:relative;width:3.6rem;animation:bob 3s ease-in-out infinite}.fl .dbi:nth-child(2){animation-delay:.5s}.fl .dbi:nth-child(3){animation-delay:1s}.fl .dbi:nth-child(4){animation-delay:1.5s}
 @keyframes bob{50%{transform:translateY(-10px)}}
 .cv{flex:1;display:grid;grid-template-columns:1.35fr .8fr;gap:2rem;align-items:center}@media(max-width:800px){.cv{grid-template-columns:1fr}}
+.logo{display:block;width:clamp(100px,18vh,170px);height:auto;margin:0 0 .8rem;object-fit:contain}
 .team{background:var(--pn);border:1px solid var(--ln);border-top:6px solid var(--am);border-radius:14px;padding:.9rem 1.2rem}.team h3{font:700 1.2rem Rockwell,"Roboto Slab",serif;color:var(--am);margin:0 0 .4rem}.team ul{list-style:none;margin:0;padding:0}.team li{padding:.45rem 0;border-top:1px solid var(--ln);font-size:.85rem}
 #dots{position:relative;display:flex;justify-content:center;gap:.5rem;padding:.4rem 0 calc(.5rem + env(safe-area-inset-bottom,0))}
 #ct{position:absolute;right:clamp(20px,5vw,80px);top:.35rem;font:.6rem ui-monospace,Consolas,monospace;color:var(--mut)}
@@ -92,6 +93,7 @@ input[type=range]{width:100%;accent-color:var(--am)}label{font-size:.85rem;margi
 
 <section class="s" data-f="distribuidas.sql">
 <div class="cv"><div>
+<img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/2/20/ESCUDETO_UTE-LVT.png?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Logo de la Universidad Técnica Luis Vargas Torres, Esmeraldas">
 <p class="mono" style="color:var(--am);margin:0">SELECT * FROM unidad_4;</p>
 <h1>Sistemas de bases de datos distribuidas</h1>
 <p style="color:var(--mut)">Base de Datos II. Guía del Ing. Miguel Fabricio Bone Andrade, Mgtr.</p>
